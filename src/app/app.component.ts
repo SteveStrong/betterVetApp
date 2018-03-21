@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'the better Vet App';
   data = {};
-  list = ['Tobias', 'Lina'];
+  list = ['Tobias', 'Lina', 'Eli'];
   vetpara = [
     {
       evidence: 'The Board acknowledges that the record includes diagnoses of PTSD.'
