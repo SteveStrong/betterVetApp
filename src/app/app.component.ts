@@ -53,5 +53,12 @@ export class AppComponent {
     return result;
   }
 
+  dofileopen(){
+    let xxx = new foFileManager();
+    xxx.userOpenFileDialog( file => {
+      alert('just opebed' + file.filename)
+    })
+    console.log("hello, buddy")
+  }
 
 }
