@@ -53,17 +53,17 @@ export class AppComponent {
     return result;
   }
 
-  dofileopen(){
-    let xxx = new foFileManager();
-    xxx.userOpenFileDialog( file => {
-      alert('just opebed' + file.filename)
-    })
-    console.log("hello, buddy")
+  dofileopen() {
+    // let xxx = new foFileManager();
+    // xxx.userOpenFileDialog( file => {
+    //   alert('just opebed' + file.filename)
+    // })
+    // console.log("hello, buddy")
   }
 
-  dofilesave(){
+  dofilesave() {
     let xxx = new foFileManager();
-    xxx.writeTextFileAsync(this.transformvet(),'testtransform','.txt',file => {
+    xxx.writeTextFileAsync(this.transformvet(), 'testtransform', '.txt', file => {
       alert('just saved' + file.filename);
       console.log("you saved it, buddy")
     })
