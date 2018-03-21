@@ -7,5 +7,9 @@
 <h2>Here are the grandkids: </h2>
 <pre>{{list | json}}</pre>
 <ul><li *ngFor="let name of list">{{name}}</li></ul>
-<pre>{{vetpara}}</pre>
+<pre>{{vetpara | json}}</pre>
+<h1>Now here's the real stuff!</h1>
+<ul><li [ngClass]="item.type" *ngFor="let item of vetpara">{{item.text}}</li></ul>
+<h1>Now here's the paragraph format!</h1>
+<div><p [ngClass]="item.type" *ngFor="let item of vetpara">{{item.text}}</p></div>
 
