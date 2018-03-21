@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import { foFileManager } from "./filemanager";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
