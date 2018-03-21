@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 
+import { foFileManager } from "./filemanager";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'the better Vet App';
+  title = 'the better duyufuyf Vet App';
   data = {};
   list = ['Tobias', 'Lina', 'Eli'];
   vetpara = [
@@ -31,5 +32,41 @@ export class AppComponent {
       text: 'Thus, the Board finds the Veteran does not have PTSD.'
     }
   ]
+
+  transform() {
+    return `${this.title}  Hello, Steve`;
+  }
+
+  transformvet() {
+    let result = [];
+    this.vetpara.forEach(function (item) {
+      let transformedtext = item.text;
+      let replaced = transformedtext.replace(/The Board/i, "<b>The Board</b>");
+      let xxx = {
+        type: item.type,
+        text: item.text,
+        upper: item.text.toUpperCase(),
+        ttext: replaced
+      }
+      result.push(xxx);
+    });
+    return result;
+  }
+
+  dofileopen() {
+    // let xxx = new foFileManager();
+    // xxx.userOpenFileDialog( file => {
+    //   alert('just opebed' + file.filename)
+    // })
+    // console.log("hello, buddy")
+  }
+
+  dofilesave() {
+    let xxx = new foFileManager();
+    xxx.writeTextFileAsync(this.transformvet(), 'testtransform', '.txt', file => {
+      alert('just saved' + file.filename);
+      console.log("you saved it, buddy")
+    })
+  }
 
 }

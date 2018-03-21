@@ -1,8 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    Welcome to {{transform()}}!
   </h1>
+  <button (click)="dofileopen()">File Open</button>
+  <button (click)="dofilesave()">Save File</button>
 </div>
 <h2>Here are the grandkids: </h2>
 <pre>{{list | json}}</pre>
@@ -12,4 +14,5 @@
 <ul><li [ngClass]="item.type" *ngFor="let item of vetpara">{{item.text}}</li></ul>
 <h1>Now here's the paragraph format!</h1>
 <div><p [ngClass]="item.type" *ngFor="let item of vetpara">{{item.text}}</p></div>
-
+<pre>{{transformvet() | json}}</pre>
+<div><p [ngClass]="item.type" *ngFor="let item of transformvet()" [innerHTML]="item.ttext"></p></div>
