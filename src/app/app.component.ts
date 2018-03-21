@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'the better Vet App';
+  title = 'the better duyufuyf Vet App';
   data = {};
   list = ['Tobias', 'Lina', 'Eli'];
   vetpara = [
@@ -31,5 +31,25 @@ export class AppComponent {
       text: 'Thus, the Board finds the Veteran does not have PTSD.'
     }
   ]
+
+  transform() {
+    return `${this.title}  Hello, Steve`;
+  }
+
+  transformvet() {
+    let result = [];
+    this.vetpara.forEach(function (item) {
+      let transformedtext = item.text;
+      let xxx = {
+        type: item.type,
+        text: item.text,
+        upper: item.text.toUpperCase(),
+        ttext: transformedtext
+      }
+      result.push(xxx);
+    });
+    return result;
+  }
+
 
 }
