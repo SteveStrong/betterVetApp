@@ -40,11 +40,12 @@ export class AppComponent {
     let result = [];
     this.vetpara.forEach(function (item) {
       let transformedtext = item.text;
+      let replaced = transformedtext.replace(/The Board/i, "<b>The Board</b>");
       let xxx = {
         type: item.type,
         text: item.text,
         upper: item.text.toUpperCase(),
-        ttext: transformedtext
+        ttext: replaced
       }
       result.push(xxx);
     });

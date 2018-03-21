@@ -13,3 +13,4 @@
 <h1>Now here's the paragraph format!</h1>
 <div><p [ngClass]="item.type" *ngFor="let item of vetpara">{{item.text}}</p></div>
 <pre>{{transformvet() | json}}</pre>
+<div><p [ngClass]="item.type" *ngFor="let item of transformvet()" [innerHTML]="item.ttext"></p></div>
