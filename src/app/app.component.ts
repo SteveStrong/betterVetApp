@@ -61,4 +61,12 @@ export class AppComponent {
     console.log("hello, buddy")
   }
 
+  dofilesave(){
+    let xxx = new foFileManager();
+    xxx.writeTextFileAsync(this.transformvet(),'testtransform','.txt',file => {
+      alert('just saved' + file.filename);
+      console.log("you saved it, buddy")
+    })
+  }
+
 }
