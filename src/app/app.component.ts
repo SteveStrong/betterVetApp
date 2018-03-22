@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { foFileManager } from "./filemanager";
-import { TransfromRules } from "./transformRules";
+import { foFileManager } from './filemanager';
+import { TransfromRules } from './transformRules';
 
 @Component({
   selector: 'app-root',
@@ -43,7 +43,7 @@ export class AppComponent {
     let result = [];
     this.vetpara.forEach(function (item) {
       let transformedtext = item.text;
-      let replaced = transformedtext.replace(/The Board/i, "<b>The Board</b>");
+      let replaced = transformedtext.replace(/The Board/i, '<b>The Board</b>');
       let xxx = {
         type: item.type,
         text: item.text,
