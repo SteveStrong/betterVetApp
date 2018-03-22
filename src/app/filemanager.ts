@@ -1,10 +1,7 @@
-// import { Tools } from './foTools'
-// import { PubSub } from './foPubSub'
-// import { foInstance } from './foInstance.model'
+
 
 // ES2015+  https://www.npmjs.com/package/savery
 import savery from 'savery';
-
 
 
 export class fileSpec {
@@ -17,22 +14,22 @@ export class fileSpec {
         this.name = name;
         this.ext = ext;
     }
-    
+
     get filename() {
         return `${this.name}${this.ext}`;
     }
 
-    static setFilenameExt(filenameExt:string, defaultExt?:string){
+    static setFilenameExt(filenameExt: string, defaultExt?: string) {
         let list = filenameExt.split('.');
-        let name:string;
-        let ext:string;
+        let name: string;
+        let ext: string;
 
-        if ( list.length == 1){
+        if (list.length == 1) {
             name = filenameExt;
             ext = defaultExt;
         } else {
-            ext = list[list.length-1];
-            name = filenameExt.replace(ext,'');
+            ext = list[list.length - 1];
+            name = filenameExt.replace(ext, '');
         }
         return new fileSpec('', name, ext)
     }
@@ -47,13 +44,18 @@ export class foFileManager {
     }
 
     private writeBlobFile(blob, filenameExt: string, onSuccess?, onFail?) {
-        savery.save(blob, filenameExt)
-            .then(obj => {
-                onSuccess && onSuccess();
-            })
-            .catch(obj => {
-                onFail && onFail(obj.error);
-            });
+        try {
+            savery.save(blob, filenameExt)
+                .then(obj => {
+                    onSuccess && onSuccess();
+                })
+                .catch(obj => {
+                    onFail && onFail(obj.error);
+                });
+        } catch (ex) {
+            alert(ex)
+        }
+
     };
 
     private readBlobFile(file, onComplete: (item: string) => void) {
@@ -109,7 +111,7 @@ export class foFileManager {
 
 
 
- 
+
 
     writeTextFileAsync(payload, name, ext, onComplete: (item: fileSpec) => void) {
         this.writeTextAsBlob(payload, name, ext);
@@ -133,11 +135,11 @@ export class foFileManager {
 
 
 
-    userOpenFileDialog(onComplete: (item: fileSpec) => void, defaultExt: string, defaultValue: string) {
+    userOpenFileDialog(onComplete: (item: fileSpec) => void, defaultExt: string, defaultValue?: string) {
 
         //http://stackoverflow.com/questions/181214/file-input-accept-attribute-is-it-useful
         //accept='image/*|audio/*|video/*'
-        let accept = defaultExt || '.knt,.csv';
+        let accept = defaultExt || '.csv,.txt';
 
         let fileSelector = document.createElement('input');
         fileSelector.setAttribute('type', 'file');
@@ -156,11 +158,7 @@ export class foFileManager {
             let extension = file ? file.name.match(extensionExtract) : [''];
             let ext = extension[0];
             document.body.removeChild(fileSelector);
-            if (!file) {
-
-            }
-            else 
-            {
+            if (file) {
                 this.readTextFileAsync(file, ext, onComplete);
             }
         }

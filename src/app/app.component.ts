@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 
 import { foFileManager } from "./filemanager";
+import { TransfromRules } from "./transformRules";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'the better duyufuyf Vet App';
+  title = 'the better Vet App';
   data = {};
   list = ['Tobias', 'Lina', 'Eli'];
   vetpara = [
@@ -54,19 +56,36 @@ export class AppComponent {
   }
 
   dofileopen() {
-    // let xxx = new foFileManager();
-    // xxx.userOpenFileDialog( file => {
-    //   alert('just opebed' + file.filename)
-    // })
-    // console.log("hello, buddy")
+    let manager = new foFileManager();
+    manager.userOpenFileDialog(file => {
+      alert(`just opened file ${file.filename} check console log`);
+      console.log(file.payload)
+    }, '.json')
+
   }
 
   dofilesave() {
-    let xxx = new foFileManager();
-    xxx.writeTextFileAsync(this.transformvet(), 'testtransform', '.txt', file => {
-      alert('just saved' + file.filename);
+    let manager = new foFileManager();
+    let filename = 'testtransform';
+    let data = this.transformvet();
+    manager.writeTextFileAsync(data, filename, '.txt', file => {
+      alert(`just saved file ${file.filename} check console log`);
       console.log("you saved it, buddy")
     })
+  }
+
+  fromRulePipeline() {
+    let rules = new TransfromRules();
+
+    let result = this.vetpara.map(function (item) {
+      return {
+        type: item.type,
+        text: item.text,
+        ttext: rules.pipeline1(item.text)
+      }
+    });
+    
+    return result;
   }
 
 }

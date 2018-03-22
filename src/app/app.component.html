@@ -1,18 +1,50 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
     Welcome to {{transform()}}!
   </h1>
-  <button (click)="dofileopen()">File Open</button>
-  <button (click)="dofilesave()">Save File</button>
+
 </div>
-<h2>Here are the grandkids: </h2>
-<pre>{{list | json}}</pre>
-<ul><li *ngFor="let name of list">{{name}}</li></ul>
-<pre>{{vetpara | json}}</pre>
-<h1>Now here's the real stuff!</h1>
-<ul><li [ngClass]="item.type" *ngFor="let item of vetpara">{{item.text}}</li></ul>
-<h1>Now here's the paragraph format!</h1>
-<div><p [ngClass]="item.type" *ngFor="let item of vetpara">{{item.text}}</p></div>
-<pre>{{transformvet() | json}}</pre>
-<div><p [ngClass]="item.type" *ngFor="let item of transformvet()" [innerHTML]="item.ttext"></p></div>
+
+<div class="col-md-12">
+  <tabset type="pills">
+    <tab heading='Render List'>
+      <h2>Here are the grandkids: </h2>
+      <pre>{{list | json}}</pre>
+      <ul>
+        <li *ngFor="let name of list">{{name}}</li>
+      </ul>
+      <pre>{{vetpara | json}}</pre>
+    </tab>
+    <tab heading='Render Raw Data as List '>
+      <h1>Now here's the real stuff!</h1>
+      <ul>
+        <li [ngClass]="item.type" *ngFor="let item of vetpara">{{item.text}}</li>
+      </ul>
+    </tab>
+    <tab heading='Render Raw Data as Paragraph'>
+      <h1>Now here's the paragraph format!</h1>
+      <div>
+        <p [ngClass]="item.type" *ngFor="let item of vetpara">{{item.text}}</p>
+      </div>
+    </tab>
+    <tab heading='Function Transforms Data'>
+
+      <pre>{{transformvet() | json}}</pre>
+    </tab>
+    <tab heading='Transform into HTML'>
+      <div>
+        <p [ngClass]="item.type" *ngFor="let item of transformvet()" [innerHTML]="item.ttext"></p>
+      </div>
+    </tab>
+    <tab heading='Coding Buttons'>
+        <button class="btn btn-success" (click)="dofileopen()">File Open</button>
+        <button class="btn btn-success" (click)="dofilesave()">Save File</button>
+    </tab>
+
+    <tab heading='Rule Pipeline'>
+        <div>
+            <p [ngClass]="item.type" *ngFor="let item of fromRulePipeline()" [innerHTML]="item.ttext"></p>
+          </div>
+    </tab>
+  </tabset>
+</div>
