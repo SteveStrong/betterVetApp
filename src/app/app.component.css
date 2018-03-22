@@ -1,3 +1,18 @@
-.evidence {background-color: cadetblue}
-.reasoning {background-color: chartreuse}
-.finding {background-color: darkgrey}
+.evidence {
+    background-color: cadetblue
+}
+
+.reasoning {
+    background-color: chartreuse
+}
+
+.finding {
+    background-color: darkgrey
+}
+
+
+.high {
+    color: red;
+    text-align: center;
+    background-color: rgb(146, 18, 18)
+}

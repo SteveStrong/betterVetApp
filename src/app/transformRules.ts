@@ -8,7 +8,7 @@ export class TransfromRules {
 
     
     rule2(text:string){
-        let result = text.replace(/probative/i, "<em>probative</em>");
+        let result = text.replace(/probative/i, "<span class='high'>probative</span>");
         return result;
     }
 
