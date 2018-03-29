@@ -50,5 +50,10 @@
             <p [ngClass]="item.type" *ngFor="let item of fromRulePipeline()" [innerHTML]="item.ttext | safeHtml"></p>
           </div>
     </tab>
+
+    <tab heading='Document Write'>
+        <button class="btn btn-success" (click)="doDocumentWrite()">Document Write</button>
+        <div #targetid></div>
+    </tab>
   </tabset>
 </div>

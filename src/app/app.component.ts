@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { foFileManager } from './filemanager';
 import { TransfromRules } from './transformRules';
@@ -9,6 +9,8 @@ import { TransfromRules } from './transformRules';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild('targetid') viewTarget:ElementRef;
+
   title = 'the better Vet App';
   data = {};
   list = ['Tobias', 'Lina', 'Eli'];
@@ -74,7 +76,7 @@ export class AppComponent {
     })
   }
 
-  fromRulePipeline() {
+  fromRulePipeline():any {
     let rules = new TransfromRules();
 
     let result = this.vetpara.map(function (item) {
@@ -86,6 +88,12 @@ export class AppComponent {
     });
     
     return result;
+  }
+
+  doDocumentWrite() {
+    let result = this.fromRulePipeline().map(item => item.ttext)
+    this.viewTarget.nativeElement.InnerText = result;
+    //document.write(result)
   }
 
 }
