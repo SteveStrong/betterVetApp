@@ -7,11 +7,13 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { AppComponent } from './app.component';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

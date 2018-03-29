@@ -1,6 +1,6 @@
 <div style="text-align:center">
   <h1>
-    Welcome to {{transform()}}!
+    Welcome to {{transform()}}
   </h1>
 
 </div>
@@ -43,7 +43,11 @@
 
     <tab heading='Rule Pipeline'>
         <div>
-            <p [ngClass]="item.type" *ngFor="let item of fromRulePipeline()" [innerHTML]="item.ttext"></p>
+            <b>The Board</b> finds the <span class='high'>probative</span> value of the findings of no <span class='high'>PTSD</span> outweighs the probative value of the findings of PTSD.
+        </div>
+
+        <div>
+            <p [ngClass]="item.type" *ngFor="let item of fromRulePipeline()" [innerHTML]="item.ttext | safeHtml"></p>
           </div>
     </tab>
   </tabset>
