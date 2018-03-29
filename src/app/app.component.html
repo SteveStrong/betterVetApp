@@ -6,7 +6,7 @@
 </div>
 
 <div class="col-md-12">
-  <tabset type="pills">
+  <tabset type="tabs">
     <tab heading='Render List'>
       <h2>Here are the grandkids: </h2>
       <pre>{{list | json}}</pre>
@@ -46,5 +46,11 @@
             <p [ngClass]="item.type" *ngFor="let item of fromRulePipeline()" [innerHTML]="item.ttext"></p>
           </div>
     </tab>
-  </tabset>
+    <tab heading='Rule Pipeline 2'>
+        <span class='high'>probative</span>
+      <div>
+          <p [ngClass]="item.type" *ngFor="let item of fromRulePipeline()">{{item.ttext}}</p>
+        </div>
+  </tab>
+</tabset>
 </div>
